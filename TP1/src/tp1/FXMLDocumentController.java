@@ -5,18 +5,25 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 
 public class FXMLDocumentController implements Initializable { 
@@ -51,6 +58,8 @@ public class FXMLDocumentController implements Initializable {
     int COL_TOTAL   = 5;
     int NB_LIG      = 25;
     int NB_COL      = 6;
+    boolean modif   = false;
+    boolean ajout   = false;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,19 +76,48 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void lsvDragDetected(MouseEvent event) {
-    
+    	
+        Dragboard db =lsvSource.startDragAndDrop(TransferMode.COPY);
+	ClipboardContent cb = new ClipboardContent();
+	cb.putString(lsvSource.getSelectionModel().getSelectedItem().toString());
+	db.setContent(cb);
+
     }
 
     @FXML
     private void btnOKAction(ActionEvent event) {
+        
+        if(ajout){
+            tabSource = Utilitaire.ajouter(tabSource, txfDA.getText(), txfExamen1.getText(),
+                    txfExamen2.getText(), txfTP1.getText(), txfTP2.getText());
+            
+        }
+        if(modif){
+            tabSource = Utilitaire.modifier(tabSource, lsvSource.getSelectionModel().getSelectedIndex() , txfDA.getText(), txfExamen1.getText(),
+                    txfExamen2.getText(), txfTP1.getText(), txfTP2.getText());
+        }
+        lsvSource.getItems().clear();
+        garnirLsvSource(tabSource);
+        viderTxf();
+        txfEditable(false);
+        ajout = false;
+        modif=false;
     }
 
     @FXML
     private void btnAnnulerAction(ActionEvent event) {
+    
+        txfEditable(false);
+        viderTxf();
+        ajout = false;
+        modif = false;
     }
 
     @FXML
     private void btnAjouterAction(ActionEvent event) {
+        ajout = true;
+        viderTxf();
+        txfEditable(true);
     }
 
     @FXML
@@ -89,18 +127,32 @@ public class FXMLDocumentController implements Initializable {
         tabSource = Utilitaire.supprimer(indLig, tabSource);
         lsvSource.getItems().clear();
         garnirLsvSource(tabSource);
+        viderTxf();
     }
 
     @FXML
     private void btnModifierAction(ActionEvent event) {
+        modif = true;
+        transformePromptEnTexte();
+        txfEditable(true);
     }
 
     @FXML
     private void imgDragOver(DragEvent event) {
+    
+        event.acceptTransferModes(TransferMode.ANY);
+        
     }
 
     @FXML
     private void imgDragDropped(DragEvent event) {
+    
+        int indLig = lsvSource.getSelectionModel().getSelectedIndex();
+        tabSource = Utilitaire.supprimer(indLig, tabSource);
+        lsvSource.getItems().clear();
+        garnirLsvSource(tabSource);
+        viderTxf();
+    
     }
 
     @FXML
@@ -109,6 +161,20 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void btnQuitterAction(ActionEvent event) {
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+
+        alert.setTitle("Sauvegarde");
+        alert.setHeaderText("Désirez-vous sauvegarder (OK) ou quitter (Annuler) ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+        } 
+        else {
+            //platform.exit();
+        }
+
     }
 
     public int[][] lireFichier(String nomFichier) throws FileNotFoundException, IOException {
@@ -217,5 +283,36 @@ public class FXMLDocumentController implements Initializable {
         }
     
     }
+    
+    public void viderTxf(){
+        txfDA.setPromptText("");
+        txfExamen1.setPromptText("");
+        txfExamen2.setPromptText("");
+        txfTP1.setPromptText("");
+        txfTP2.setPromptText("");
+        
+        txfDA.clear();
+        txfExamen1.clear();
+        txfExamen2.clear();
+        txfTP1.clear();
+        txfTP2.clear();
+    }
+    
+    public void txfEditable(boolean choix){
+        txfDA.setEditable(choix);
+        txfExamen1.setEditable(choix);
+        txfExamen2.setEditable(choix);
+        txfTP1.setEditable(choix);
+        txfTP2.setEditable(choix);
+    }
+    
+    public void transformePromptEnTexte(){
+        
+            txfDA.setText(txfDA.getPromptText());
+            txfExamen1.setText(txfExamen1.getPromptText());
+            txfExamen2.setText(txfExamen2.getPromptText());
+            txfTP1.setText(txfTP1.getPromptText());
+            txfTP2.setText(txfTP2.getPromptText());
+        
+    }
 }
-
