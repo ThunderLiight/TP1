@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="679.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp1.FXMLDocumentController">
+   <children>
+      <ListView fx:id="lsvSource" layoutX="35.0" layoutY="41.0" onDragDetected="#lsvDragDetected" onMouseClicked="#lvsMouseClicked" prefHeight="510.0" prefWidth="113.0" />
+      <Label layoutX="36.0" layoutY="21.0" text="DA" />
+      <Label layoutX="159.0" layoutY="64.0" text="DA" />
+      <Label layoutX="158.0" layoutY="109.0" text="Examen 1" />
+      <Label layoutX="158.0" layoutY="155.0" text="Examen 2" />
+      <Label layoutX="158.0" layoutY="200.0" text="TP1" />
+      <Label layoutX="158.0" layoutY="245.0" text="TP2" />
+      <TextField fx:id="txfDA" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="216.0" layoutY="60.0" prefHeight="25.0" prefWidth="113.0" />
+      <TextField fx:id="txfExamen1" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="216.0" layoutY="105.0" prefHeight="25.0" prefWidth="113.0" />
+      <TextField fx:id="txfExamen2" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="216.0" layoutY="151.0" prefHeight="25.0" prefWidth="113.0" />
+      <TextField fx:id="txfTP1" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="216.0" layoutY="196.0" prefHeight="25.0" prefWidth="113.0" />
+      <TextField fx:id="txfTP2" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="216.0" layoutY="241.0" prefHeight="25.0" prefWidth="113.0" />
+      <Button layoutX="152.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnOKAction" prefHeight="25.0" prefWidth="86.0" text="OK" />
+      <Button layoutX="239.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnAnnulerAction" prefHeight="25.0" prefWidth="86.0" text="Annuler" />
+      <Button layoutX="36.0" layoutY="560.0" mnemonicParsing="false" onAction="#btnAjouterAction" prefHeight="25.0" prefWidth="113.0" text="Ajouter" />
+      <Button layoutX="36.0" layoutY="590.0" mnemonicParsing="false" onAction="#btnSupprimerAction" prefHeight="25.0" prefWidth="113.0" text="Supprimer" />
+      <Button layoutX="36.0" layoutY="621.0" mnemonicParsing="false" onAction="#btnModifierAction" prefHeight="25.0" prefWidth="113.0" text="Modifier" />
+      <ImageView fx:id="imgCible" fitHeight="101.0" fitWidth="95.0" layoutX="234.0" layoutY="575.0" onDragDropped="#imgDragDropped" onDragOver="#imgDragOver" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@corbeille.jpg" />
+         </image>
+      </ImageView>
+      <GridPane fx:id="gdpNotes" alignment="CENTER" gridLinesVisible="true" layoutX="340.0" layoutY="60.0" prefHeight="530.0" prefWidth="701.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="160.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="216.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="228.0" minHeight="4.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="248.0" minHeight="9.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="254.0" minHeight="8.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="118.0" text="DA" textAlignment="CENTER" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="117.0" text="Examen1" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="118.0" text="Examen2" GridPane.columnIndex="2" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="116.0" text="TP1" GridPane.columnIndex="3" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="117.0" text="TP2" GridPane.columnIndex="4" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="117.0" text="Total" GridPane.columnIndex="5" />
+         </children>
+      </GridPane>
+      <Label layoutX="340.0" layoutY="25.0" text="Tris" />
+      <ComboBox fx:id="cmbTrier" layoutX="371.0" layoutY="20.0" onAction="#cmbTrierAction" prefHeight="25.0" prefWidth="321.0" />
+      <GridPane fx:id="gdpStats" layoutX="340.0" layoutY="593.0" prefHeight="62.0" prefWidth="701.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="120.0" text="Moyenne" textAlignment="RIGHT" />
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="120.0" text="Note minimum" textAlignment="RIGHT" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="120.0" text="Note maximum" textAlignment="RIGHT" GridPane.rowIndex="2" />
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="168.0" text="Nombre d'élèves " textAlignment="RIGHT" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Button layoutX="890.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnQuitterAction" prefHeight="25.0" prefWidth="154.0" text="Quitter" />
+   </children>
+</AnchorPane>
